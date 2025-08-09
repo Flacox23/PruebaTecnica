@@ -4,7 +4,11 @@ from selenium.webdriver.common.keys import Keys # Acciones
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains 
 import time
+import os
 
+
+# Ruta absoluta a la carpeta de evidencias
+evidencias_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "evidencias"))
 
 # Configurar el navegador (Chrome)
 driver = webdriver.Chrome()
@@ -30,7 +34,7 @@ driver.find_element(By.CSS_SELECTOR, ".dx-vam").click()
 time.sleep(3)
 
 # Tomar captura de pantalla del error
-driver.save_screenshot("Evidencias/login_fallido.png")
+driver.save_screenshot(os.path.join(evidencias_path, "login_fallido.png"))
 
 # Selecciona la opcion registrar
 driver.find_element(By.CSS_SELECTOR, ".azulclaro").click()
@@ -63,8 +67,8 @@ driver.find_element(By.CSS_SELECTOR, "#BtnRegistrar_CD").click()
 # Esperar respuesta
 time.sleep(5)
 
-# Tomar captura de pantalla del error
-driver.save_screenshot("Evidencias/registrado.png")
+# Tomar captura de pantalla de registro
+driver.save_screenshot(os.path.join(evidencias_path, "registrado.png"))
 
 # Cerrar navegador
 driver.quit()
